@@ -5,7 +5,7 @@ The solution models **Slowly Changing Dimensions (SCD Type 2)** and **fact table
 
 ---
 
-## 📌 Problem Overview
+## Problem Overview
 
 The goal of this challenge is to design and implement a batch analytics platform capable of:
 - Ingesting incremental raw data
@@ -18,31 +18,31 @@ The implementation avoids managed SaaS analytics platforms and focuses on open, 
 
 ---
 
-## 🏗️ Architecture Overview
+## Architecture Overview
 
 The proposed architecture is based on an **AWS data lake pattern**, implemented locally using Spark and Delta Lake.
 
-📁 **Raw Zone (Bronze)**  
+**Raw Zone (Bronze)**  
 - Immutable CSV batch files  
 - Incremental ingestion  
 - Source-of-truth data  
 
-📁 **Silver Zone (Curated)**  
+**Silver Zone (Curated)**  
 - Cleaned and conformed datasets  
 - Snapshot-level grain  
 - Stored as **Delta Lake tables**
 
-📁 **Gold Zone (Serving)**  
+**Gold Zone (Serving)**  
 - Analytics-ready dimensional model  
 - **SCD Type 2 dimensions**
 - Fact tables optimized for BI and SQL analytics
 
 ### Architecture Diagram
-📌 ![Architecture Diagram](diagrams/architecture.png)
+![Architecture Diagram](diagrams/architecture.png)
 
 ---
 
-## ⭐ Dimensional Model (Star Schema)
+## Dimensional Model (Star Schema)
 
 The Gold layer follows a **star schema** design:
 
@@ -53,13 +53,13 @@ The Gold layer follows a **star schema** design:
 ### Fact Table
 - **fact_olympic_results**
 
-📌 ![Star Schema](diagrams/start_schema.png)
+![Star Schema](diagrams/start_schema.png)
 
 ---
 
-## 📊 Data Model Details
+## Data Model Details
 
-### 🧍 Athlete Dimension (SCD Type 2)
+### Athlete Dimension (SCD Type 2)
 Tracks historical changes in athlete attributes:
 - height
 - weight
@@ -69,7 +69,7 @@ Each change generates a new version with:
 - `effective_to`
 - `is_current`
 
-### 🎮 Games Dimension (SCD Type 0)
+### Games Dimension (SCD Type 0)
 Reference data for Olympic games:
 - year
 - season
@@ -77,12 +77,12 @@ Reference data for Olympic games:
 
 No historical changes are expected.
 
-### 🧮 Results Fact Table
+### Results Fact Table
 Stores event-level results and references both dimensions using surrogate keys.
 
 ---
 
-## 🔄 Pipeline Flow
+## Pipeline Flow
 
 1. **Raw → Silver**
    - Read latest CSV batch
@@ -102,7 +102,7 @@ Stores event-level results and references both dimensions using surrogate keys.
 
 ---
 
-## 🛠️ Technology Stack
+## Technology Stack
 
 - **Apache Spark 3.5**
 - **Delta Lake**
@@ -113,7 +113,7 @@ Stores event-level results and references both dimensions using surrogate keys.
 
 ---
 
-## 📂 Folder Description
+## Folder Description
 
 - **data/raw_samples/**  
   Sample CSV files used to simulate incremental batch ingestion for athletes, games, and Olympic results.
