@@ -133,3 +133,14 @@ Stores event-level results and references both dimensions using surrogate keys.
 
 - **mypy.ini**  
   Static type checking configuration to ensure code quality.
+
+## Notes on AWS Deployment
+
+Although the implementation runs locally (Google Drive + Spark (Colab)), it is fully portable to AWS:
+
+| Local | AWS Equivalent |
+|-----|---------------|
+| Local FS | Amazon S3 |
+| Spark Local | Amazon EMR |
+| Delta Lake | Delta on S3 |
+| SQL Queries | Amazon Athena |
