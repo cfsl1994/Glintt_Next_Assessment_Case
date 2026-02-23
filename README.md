@@ -38,7 +38,7 @@ The proposed architecture is based on an **AWS data lake pattern**, implemented 
 - Fact tables optimized for BI and SQL analytics
 
 ### Architecture Diagram
-📌 `diagrams/architecture.png`
+📌 ![Architecture Diagram](diagrams/architecture.png)
 
 ---
 
@@ -53,7 +53,7 @@ The Gold layer follows a **star schema** design:
 ### Fact Table
 - **fact_olympic_results**
 
-📌 `diagrams/star_schema.png`
+📌 ![Star Schema](diagrams/start_schema.png)
 
 ---
 
