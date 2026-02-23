@@ -113,29 +113,23 @@ Stores event-level results and references both dimensions using surrogate keys.
 
 ---
 
-## 📂 Repository Structure
-Glintt_Next_Assessment_Case/
-│
-├── data/
-│   └── raw_samples/
-│       ├── athletes_22-02-2026_10_08.csv
-│       ├── athletes_22-02-2026_11_02.csv
-│       ├── athletes_23-02-2026_16_10.csv
-│       ├── games_23-02-2026_10_24.csv
-│       ├── games_23-02-2026_10_31.csv
-│       ├── results_fact_batch_23-02-2026_11_41.csv
-│       └── results_fact_batch_23-02-2026_11_50.csv
-│
-├── diagrams/
-│   ├── architecture.png
-│   └── star_schema.png
-│
-├── src/
-│   ├── config.py
-│   ├── pipeline_athlete.py
-│   ├── pipeline_games.py
-│   └── pipeline_fact.py
-│
-├── README.md
-├── requirements.txt
-└── mypy.ini
+## 📂 Folder Description
+
+- **data/raw_samples/**  
+  Sample CSV files used to simulate incremental batch ingestion for athletes, games, and Olympic results.
+
+- **diagrams/**  
+  Architecture and star schema diagrams used to explain the overall platform design and data model.
+
+- **src/**  
+  Spark + Delta Lake batch pipelines:
+  - `pipeline_athlete.py`: Athlete dimension with SCD Type 2 logic.
+  - `pipeline_games.py`: Games dimension (static/SCD Type 0).
+  - `pipeline_fact.py`: Olympic results fact table.
+  - `config.py`: Shared configuration and paths.
+
+- **requirements.txt**  
+  Python dependencies required to run the project.
+
+- **mypy.ini**  
+  Static type checking configuration to ensure code quality.
